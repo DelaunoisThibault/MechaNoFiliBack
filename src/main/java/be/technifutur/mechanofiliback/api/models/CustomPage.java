@@ -1,4 +1,10 @@
 package be.technifutur.mechanofiliback.api.models;
 
-public class CustomPage {
+import java.util.List;
+
+public record CustomPage<T>(
+        List<T> results,
+        int totalPages,
+        int currentPage
+) {
 }

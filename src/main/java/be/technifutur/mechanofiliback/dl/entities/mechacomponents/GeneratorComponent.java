@@ -1,6 +1,7 @@
 package be.technifutur.mechanofiliback.dl.entities.mechacomponents;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import lombok.*;
 
@@ -13,5 +14,8 @@ import lombok.*;
 public class GeneratorComponent extends MechaComponent {
 
     @Column(nullable = false)
-    private int power_capacity;
+    private int powerCapacity;
+
+    @Embedded
+    private ComponentSize size;
 }

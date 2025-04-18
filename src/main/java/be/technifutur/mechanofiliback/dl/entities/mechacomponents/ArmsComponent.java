@@ -12,8 +12,17 @@ import lombok.*;
 public class ArmsComponent extends MechaComponent {
 
     @Column(nullable = false)
-    private int power_consumption;
+    private int powerConsumption;
 
     @Column(nullable = false)
     private int durability;
+
+    @Column(nullable = false)
+    private int strength;
+
+    @Column(nullable = false)
+    private String type;
+
+    @Embedded
+    private ComponentSize size;
 }

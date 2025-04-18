@@ -66,4 +66,10 @@ public class Mecha {
     @Setter
     private MechaEquipment rightShoulder;
 
+    public Mecha (String name, MechaType mechaType) {
+        this();
+        this.name = name;
+        this.mechaType = mechaType;
+    }
+
 }

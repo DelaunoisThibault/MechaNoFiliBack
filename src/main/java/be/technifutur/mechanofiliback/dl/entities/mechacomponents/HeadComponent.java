@@ -1,6 +1,7 @@
 package be.technifutur.mechanofiliback.dl.entities.mechacomponents;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import lombok.*;
 
@@ -13,8 +14,17 @@ import lombok.*;
 public class HeadComponent extends MechaComponent {
 
     @Column(nullable = false)
-    private int power_consumption;
+    private int powerConsumption;
 
     @Column(nullable = false)
     private int durability;
+
+    @Column(nullable = false)
+    private String sensors;
+
+    @Column(nullable = false)
+    private String fireControlSystem;
+
+    @Embedded
+    private ComponentSize size;
 }

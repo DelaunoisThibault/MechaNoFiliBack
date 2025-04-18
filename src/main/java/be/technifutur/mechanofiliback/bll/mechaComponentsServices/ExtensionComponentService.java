@@ -1,4 +1,4 @@
-package be.technifutur.mechanofiliback.bll;
+package be.technifutur.mechanofiliback.bll.mechaComponentsServices;
 
 import be.technifutur.mechanofiliback.dl.entities.mechacomponents.ExtensionComponent;
 import org.springframework.data.domain.Page;

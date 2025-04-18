@@ -1,8 +1,10 @@
 package be.technifutur.mechanofiliback.dl.entities.mechacomponents;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import be.technifutur.mechanofiliback.dl.enums.CockpitComfortLevel;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -13,8 +15,22 @@ import lombok.*;
 public class TorsoComponent extends MechaComponent {
 
     @Column(nullable = false)
-    private int power_consumption;
+    private int powerConsumption;
 
     @Column(nullable = false)
     private int durability;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private CockpitComfortLevel cockpitComfortLevel;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @Setter
+    private List<TorsoFunctionnality> functionnality;
+
+    @Column(nullable = false)
+    private int nbrPossiblePilots;
+
+    @Embedded
+    private ComponentSize size;
 }
