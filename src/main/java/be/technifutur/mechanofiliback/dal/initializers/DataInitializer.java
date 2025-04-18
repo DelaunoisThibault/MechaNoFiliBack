@@ -39,6 +39,18 @@ public class DataInitializer implements CommandLineRunner {
                             MechaType.WORKER
                     ),
                     new Mecha(
+                            "Optimus Prime",
+                            MechaType.FIGHTER
+                    ),
+                    new Mecha(
+                            "Robotron",
+                            MechaType.FIGHTER
+                    ),
+                    new Mecha(
+                            "Valvare the vampirator",
+                            MechaType.WORKER
+                    ),
+                    new Mecha(
                             "Zero Two",
                             MechaType.WORKER
                     )
