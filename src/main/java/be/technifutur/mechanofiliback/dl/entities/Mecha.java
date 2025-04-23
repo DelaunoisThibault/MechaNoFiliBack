@@ -72,4 +72,17 @@ public class Mecha {
         this.mechaType = mechaType;
     }
 
+    public Mecha (String name, MechaType mechaType, ArmsComponent arms, LegsComponent legs, HeadComponent head, TorsoComponent torso, GeneratorComponent generator, ExtensionComponent extension, MechaEquipment leftHand, MechaEquipment rightHand, MechaEquipment leftShoulder, MechaEquipment rightShoulder) {
+        this(name, mechaType);
+        this.arms = arms;
+        this.legs = legs;
+        this.head = head;
+        this.torso = torso;
+        this.generator = generator;
+        this.extension = extension;
+        this.leftHand = leftHand;
+        this.rightHand = rightHand;
+        this.leftShoulder = leftShoulder;
+        this.rightShoulder = rightShoulder;
+    }
 }

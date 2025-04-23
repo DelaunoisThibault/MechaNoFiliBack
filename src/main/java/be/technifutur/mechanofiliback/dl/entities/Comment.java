@@ -1,9 +1,6 @@
 package be.technifutur.mechanofiliback.dl.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -16,4 +13,12 @@ public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Setter
+    @Column(nullable = false)
+    private String content;
+
+    public Comment(String content) {
+        this.content = content;
+    }
 }

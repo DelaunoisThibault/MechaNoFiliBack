@@ -16,9 +16,11 @@ public class MechaEquipment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Setter
     @Column(nullable = false, length = 123)
     private String name;
 
+    @Setter
     @Column(nullable = false)
     private int weight;
 
@@ -27,9 +29,19 @@ public class MechaEquipment {
     @Setter
     private EquipmentType equipmentType;
 
+    @Setter
     @Column(nullable = false)
-    private int power_consumption;
+    private int powerConsumption;
 
+    @Setter
     @Column(nullable = false)
     private int durability;
+
+    public MechaEquipment(String name, int weight, EquipmentType equipmentType, int powerConsumption, int durability) {
+        this.name = name;
+        this.weight = weight;
+        this.equipmentType = equipmentType;
+        this.powerConsumption = powerConsumption;
+        this.durability = durability;
+    }
 }

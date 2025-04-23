@@ -15,32 +15,49 @@ public class ExtensionComponentServiceImplementation implements ExtensionCompone
     private final ExtensionComponentRepository extensionComponentRepository;
 
     @Override
-    public ExtensionComponent saveExtensionComponent(ExtensionComponent extensionComponent) {
-        return null;
+    public ExtensionComponent createExtensionComponent(ExtensionComponent extensionComponent) {
+        extensionComponentRepository.save(extensionComponent);
+        return extensionComponent;
     }
 
     @Override
-    public ExtensionComponent createExtensionComponent(ExtensionComponent extensionComponent) {
-        return null;
+    public ExtensionComponent saveExtensionComponent(ExtensionComponent extensionComponent) {
+
+        if(extensionComponentRepository.existsById(extensionComponent.getId())) {
+            throw new RuntimeException("id already exists");
+        }
+        extensionComponentRepository.save(extensionComponent);
+        return extensionComponent;
     }
 
     @Override
     public ExtensionComponent findExtensionComponentById(Long id) {
-        return null;
+        return extensionComponentRepository.findById(id).orElseThrow(
+                () -> new RuntimeException("id not found")
+        );
     }
 
     @Override
     public Page<ExtensionComponent> findAll(Pageable pageable) {
-        return null;
+        return extensionComponentRepository.findAll(pageable);
     }
 
     @Override
     public void update(Long id, ExtensionComponent extensionComponent) {
-
+        ExtensionComponent existingExtension = extensionComponentRepository.findById(id).orElseThrow(
+                () -> new RuntimeException("id not found")
+        );
+        existingExtension.setName(extensionComponent.getName());
+        existingExtension.setWeight(extensionComponent.getWeight());
+        existingExtension.setPower_consumption(extensionComponent.getPower_consumption());
+        existingExtension.setComments(extensionComponent.getComments());
     }
-
     @Override
     public void deleteById(Long id) {
+        if(!extensionComponentRepository.existsById(id)) {
+            throw new RuntimeException("id not found");
+        }
+        extensionComponentRepository.deleteById(id);
 
     }
 }
