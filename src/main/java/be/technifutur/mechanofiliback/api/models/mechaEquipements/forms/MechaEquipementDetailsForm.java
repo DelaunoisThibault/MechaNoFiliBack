@@ -1,18 +1,21 @@
 package be.technifutur.mechanofiliback.api.models.mechaEquipements.forms;
 
-import be.technifutur.mechanofiliback.dl.entities.Mecha;
+import be.technifutur.mechanofiliback.dl.entities.Comment;
 import be.technifutur.mechanofiliback.dl.entities.MechaEquipment;
 import be.technifutur.mechanofiliback.dl.enums.EquipmentType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-public record MechaEquipementForm (
+import java.util.List;
+
+public record MechaEquipementDetailsForm(
         @NotBlank @Size(max = 100)
         String name,
         int weight,
         EquipmentType equipmentType,
         int powerConsumption,
-        int durability
+        int durability,
+        List<Comment> comments
 ) {
     public MechaEquipment toMechaEquipment() {
         return new MechaEquipment(
@@ -20,7 +23,8 @@ public record MechaEquipementForm (
                 weight,
                 equipmentType,
                 powerConsumption,
-                durability
+                durability,
+                comments
         );
     }
 }

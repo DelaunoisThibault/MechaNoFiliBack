@@ -1,24 +1,30 @@
 package be.technifutur.mechanofiliback.api.models.mechaEquipements.dtos;
 
+import be.technifutur.mechanofiliback.api.models.comments.dtos.CommentDTO;
 import be.technifutur.mechanofiliback.dl.entities.MechaEquipment;
 import be.technifutur.mechanofiliback.dl.enums.EquipmentType;
 
-public record MechaEquipementDTO(
+import java.util.Set;
+import java.util.stream.Collectors;
+
+public record MechaEquipementDetailsDTO(
         Long id,
         String name,
         int weight,
         EquipmentType equipmentType,
         int powerConsumption,
-        int durability
+        int durability,
+        Set<CommentDTO> comments
 ) {
-    public static MechaEquipementDTO fromMechaEquipement(MechaEquipment mechaEquipment) {
-        return new MechaEquipementDTO(
+    public static MechaEquipementDetailsDTO fromMechaEquipement(MechaEquipment mechaEquipment) {
+        return new MechaEquipementDetailsDTO(
                 mechaEquipment.getId(),
                 mechaEquipment.getName(),
                 mechaEquipment.getWeight(),
                 mechaEquipment.getEquipmentType(),
                 mechaEquipment.getPowerConsumption(),
-                mechaEquipment.getDurability()
+                mechaEquipment.getDurability(),
+                mechaEquipment.getComments().stream().map(CommentDTO::fromComment).collect(Collectors.toSet())
         );
     }
 }

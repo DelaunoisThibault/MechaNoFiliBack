@@ -10,6 +10,7 @@ public record ExtensionComponentDetailsDTO(
         Long id,
         String name,
         int weight,
+        String imageUrl,
         Set<CommentDTO> comments,
         int powerConsumption
 ) {
@@ -18,6 +19,7 @@ public record ExtensionComponentDetailsDTO(
                 extensionComponent.getId(),
                 extensionComponent.getName(),
                 extensionComponent.getWeight(),
+                extensionComponent.getImageUrl(),
                 extensionComponent.getComments().stream().map(CommentDTO::fromComment).collect(Collectors.toSet()),
                 extensionComponent.getPowerConsumption()
         );

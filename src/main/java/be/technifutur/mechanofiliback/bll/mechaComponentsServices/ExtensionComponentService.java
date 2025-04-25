@@ -12,9 +12,9 @@ public interface ExtensionComponentService {
 
     ExtensionComponent findExtensionComponentById(Long id);
 
-    Page<ExtensionComponent> findAll(Pageable pageable);
+    Page<ExtensionComponent> findAllExtensionComponent(Pageable pageable);
 
-    void update(Long id, ExtensionComponent extensionComponent);
+    void updateExtensionComponent(Long id, ExtensionComponent extensionComponent);
 
-    void deleteById(Long id);
+    void deleteExtensionComponentById(Long id);
 }

@@ -11,6 +11,7 @@ public record ExtensionComponentDetailsForm(
         @NotBlank @Size(max = 100)
         String name,
         int weight,
+        String imageUrl,
         List<Comment> comments,
         int powerConsumption
 ) {
@@ -19,6 +20,7 @@ public record ExtensionComponentDetailsForm(
               name,
               weight,
               comments,
+              imageUrl,
               powerConsumption
         );
     }

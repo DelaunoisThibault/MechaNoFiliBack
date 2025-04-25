@@ -10,6 +10,7 @@ public record ExtensionComponentCreateDTO(
         Long id,
         String name,
         int weight,
+        String imageUrl,
         int powerConsumption
 ) {
     public static ExtensionComponentCreateDTO fromExtensionComponent(ExtensionComponent extensionComponent) {
@@ -17,6 +18,7 @@ public record ExtensionComponentCreateDTO(
                 extensionComponent.getId(),
                 extensionComponent.getName(),
                 extensionComponent.getWeight(),
+                extensionComponent.getImageUrl(),
                 extensionComponent.getPowerConsumption()
         );
     }

@@ -14,7 +14,7 @@ public interface MechaService {
 
     Mecha saveMecha(Mecha mecha);
 
-    Mecha findById(Long id);
+    Mecha findMechaById(Long id);
 
     Page<Mecha> findAll(Pageable pageable);
 
@@ -22,7 +22,7 @@ public interface MechaService {
 
     void updateBaseMecha(Long id, Mecha mecha);
 
-    void update(Long id, Mecha mecha);
+    void updateMecha(Long id, Mecha mecha);
 
-    void deleteById(Long id);
+    void deleteMechaById(Long id);
 }

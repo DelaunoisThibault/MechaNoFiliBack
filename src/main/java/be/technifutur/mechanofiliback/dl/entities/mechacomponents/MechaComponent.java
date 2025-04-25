@@ -14,7 +14,7 @@ import java.util.List;
 @ToString
 @Getter
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class MechaComponent {
+public abstract class MechaComponent {
 
     @Id
     @GeneratedValue
@@ -28,20 +28,28 @@ public class MechaComponent {
     @Column(nullable = false)
     private int weight;
 
+    @Column(nullable = false)
+    @Setter
+    private String imageUrl;
+
     @Setter
     @OneToMany
     private List<Comment> comments = new ArrayList<>();
 
-    public MechaComponent(String name, int weight, List<Comment> comments) {
+    public MechaComponent(String name, int weight, String imageUrl) {
+        this();
+        this.name = name;
+        this.weight = weight;
+        this.imageUrl = imageUrl;
+    }
+
+    public MechaComponent(String name, int weight, List<Comment> comments, String imageUrl) {
         this();
         this.name = name;
         this.weight = weight;
         this.comments = comments;
+        this.imageUrl = imageUrl;
     }
 
-    public MechaComponent(String name, int weight) {
-        this();
-        this.name = name;
-        this.weight = weight;
-    }
+
 }

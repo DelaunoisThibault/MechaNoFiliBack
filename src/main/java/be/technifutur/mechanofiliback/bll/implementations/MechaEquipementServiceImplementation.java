@@ -35,19 +35,19 @@ public class MechaEquipementServiceImplementation implements MechaEquipementServ
     }
 
     @Override
-    public MechaEquipment findById(Long id) {
+    public MechaEquipment findMechaEquipementById(Long id) {
         return mechaEquipmentRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("id not found")
         );
     }
 
     @Override
-    public Page<MechaEquipment> findAll(Pageable pageable) {
+    public Page<MechaEquipment> findAllMechaEquipement(Pageable pageable) {
         return mechaEquipmentRepository.findAll(pageable);
     }
 
     @Override
-    public void update(Long id, MechaEquipment mechaEquipment) {
+    public void updateMechaEquipement(Long id, MechaEquipment mechaEquipment) {
         MechaEquipment existingMechaEquipement = mechaEquipmentRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("id not found")
         );
@@ -60,7 +60,7 @@ public class MechaEquipementServiceImplementation implements MechaEquipementServ
     }
 
     @Override
-    public void deleteById(Long id) {
+    public void deleteMechaEquipementById(Long id) {
         if(!mechaEquipmentRepository.existsById(id)) {
             throw new RuntimeException("id not found");
         }

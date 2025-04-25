@@ -11,12 +11,14 @@ public record ExtensionComponentCreateForm(
         @NotBlank @Size(max = 100)
         String name,
         int weight,
+        String imageUrl,
         int powerConsumption
 ) {
     public ExtensionComponent toExtensionComponent() {
         return new ExtensionComponent(
                 name,
                 weight,
+                imageUrl,
                 powerConsumption
         );
     }

@@ -1,6 +1,7 @@
 package be.technifutur.mechanofiliback.dl.entities.mechacomponents;
 
 import be.technifutur.mechanofiliback.dl.entities.Comment;
+import be.technifutur.mechanofiliback.dl.enums.WeightCategory;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -29,24 +30,29 @@ public class HeadComponent extends MechaComponent {
     @Column(nullable = false)
     private String fireControlSystem;
 
+    @Column(nullable = false)
+    private WeightCategory weightCategory;
+
     @Embedded
     private ComponentSize size;
 
-    public HeadComponent(String name, int weight, int powerConsumption, int durability, String sensors, String fireControlSystem, ComponentSize size) {
-        super(name, weight);
+    public HeadComponent(String name, int weight, String imageUrl, int powerConsumption, int durability, String sensors, String fireControlSystem, WeightCategory weightCategory, ComponentSize size) {
+        super(name, weight, imageUrl);
         this.powerConsumption = powerConsumption;
         this.durability = durability;
         this.sensors = sensors;
         this.fireControlSystem = fireControlSystem;
+        this.weightCategory = weightCategory;
         this.size = size;
     }
 
-    public HeadComponent(String name, int weight, List<Comment> comments, int powerConsumption, int durability, String sensors, String fireControlSystem, ComponentSize size) {
-        super(name, weight, comments);
+    public HeadComponent(String name, int weight, List<Comment> comments, String imageUrl, int powerConsumption, int durability, String sensors, String fireControlSystem, WeightCategory weightCategory, ComponentSize size) {
+        super(name, weight, comments, imageUrl);
         this.powerConsumption = powerConsumption;
         this.durability = durability;
         this.sensors = sensors;
         this.fireControlSystem = fireControlSystem;
+        this.weightCategory = weightCategory;
         this.size = size;
     }
 }

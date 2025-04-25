@@ -38,22 +38,22 @@ public class ExtensionComponentServiceImplementation implements ExtensionCompone
     }
 
     @Override
-    public Page<ExtensionComponent> findAll(Pageable pageable) {
+    public Page<ExtensionComponent> findAllExtensionComponent(Pageable pageable) {
         return extensionComponentRepository.findAll(pageable);
     }
 
     @Override
-    public void update(Long id, ExtensionComponent extensionComponent) {
+    public void updateExtensionComponent(Long id, ExtensionComponent extensionComponent) {
         ExtensionComponent existingExtension = extensionComponentRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("id not found")
         );
         existingExtension.setName(extensionComponent.getName());
         existingExtension.setWeight(extensionComponent.getWeight());
-        existingExtension.setPower_consumption(extensionComponent.getPower_consumption());
+        existingExtension.setPowerConsumption(extensionComponent.getPowerConsumption());
         existingExtension.setComments(extensionComponent.getComments());
     }
     @Override
-    public void deleteById(Long id) {
+    public void deleteExtensionComponentById(Long id) {
         if(!extensionComponentRepository.existsById(id)) {
             throw new RuntimeException("id not found");
         }

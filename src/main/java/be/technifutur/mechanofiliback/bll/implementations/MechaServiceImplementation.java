@@ -59,7 +59,7 @@ public class MechaServiceImplementation implements MechaService {
     }
 
     @Override
-    public Mecha findById(Long id) {
+    public Mecha findMechaById(Long id) {
         return mechaRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("id not found")
         );
@@ -97,7 +97,7 @@ public class MechaServiceImplementation implements MechaService {
     }
 
     @Override
-    public void update(Long id, Mecha mecha) {
+    public void updateMecha(Long id, Mecha mecha) {
         Mecha existingMecha = mechaRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("id not found")
         );
@@ -117,7 +117,7 @@ public class MechaServiceImplementation implements MechaService {
     }
 
     @Override
-    public void deleteById(Long id) {
+    public void deleteMechaById(Long id) {
         if(!mechaRepository.existsById(id)) {
             throw new RuntimeException("id not found");
         }
