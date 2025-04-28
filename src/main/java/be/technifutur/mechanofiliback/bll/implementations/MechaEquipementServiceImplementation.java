@@ -15,12 +15,37 @@ public class MechaEquipementServiceImplementation implements MechaEquipementServ
     private final MechaEquipmentRepository mechaEquipmentRepository;
 
     @Override
-    public MechaEquipment createMechaEquipement(MechaEquipment mechaEquipment) {
+    public MechaEquipment createMechaEquipementNoImage(MechaEquipment mechaEquipment) {
         mechaEquipment.setName(mechaEquipment.getName());
         mechaEquipment.setEquipmentType(mechaEquipment.getEquipmentType());
         mechaEquipment.setDurability(mechaEquipment.getDurability());
         mechaEquipment.setWeight(mechaEquipment.getWeight());
         mechaEquipment.setPowerConsumption(mechaEquipment.getPowerConsumption());
+        mechaEquipmentRepository.save(mechaEquipment);
+        return mechaEquipment;
+    }
+
+    @Override
+    public MechaEquipment createMechaEquipementNoComment(MechaEquipment mechaEquipment) {
+        mechaEquipment.setName(mechaEquipment.getName());
+        mechaEquipment.setImageUrl(mechaEquipment.getImageUrl());
+        mechaEquipment.setEquipmentType(mechaEquipment.getEquipmentType());
+        mechaEquipment.setDurability(mechaEquipment.getDurability());
+        mechaEquipment.setWeight(mechaEquipment.getWeight());
+        mechaEquipment.setPowerConsumption(mechaEquipment.getPowerConsumption());
+        mechaEquipmentRepository.save(mechaEquipment);
+        return mechaEquipment;
+    }
+
+    @Override
+    public MechaEquipment createMechaEquipement(MechaEquipment mechaEquipment) {
+        mechaEquipment.setName(mechaEquipment.getName());
+        mechaEquipment.setImageUrl(mechaEquipment.getImageUrl());
+        mechaEquipment.setEquipmentType(mechaEquipment.getEquipmentType());
+        mechaEquipment.setDurability(mechaEquipment.getDurability());
+        mechaEquipment.setWeight(mechaEquipment.getWeight());
+        mechaEquipment.setPowerConsumption(mechaEquipment.getPowerConsumption());
+        mechaEquipment.setComments(mechaEquipment.getComments());
         mechaEquipmentRepository.save(mechaEquipment);
         return mechaEquipment;
     }
@@ -47,7 +72,7 @@ public class MechaEquipementServiceImplementation implements MechaEquipementServ
     }
 
     @Override
-    public void updateMechaEquipement(Long id, MechaEquipment mechaEquipment) {
+    public void updateMechaEquipementNoImage(Long id, MechaEquipment mechaEquipment) {
         MechaEquipment existingMechaEquipement = mechaEquipmentRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("id not found")
         );
@@ -56,6 +81,35 @@ public class MechaEquipementServiceImplementation implements MechaEquipementServ
         existingMechaEquipement.setDurability(mechaEquipment.getDurability());
         existingMechaEquipement.setWeight(mechaEquipment.getWeight());
         existingMechaEquipement.setPowerConsumption(mechaEquipment.getPowerConsumption());
+        mechaEquipmentRepository.save(existingMechaEquipement);
+    }
+
+    @Override
+    public void updateMechaEquipementNoComment(Long id, MechaEquipment mechaEquipment) {
+        MechaEquipment existingMechaEquipement = mechaEquipmentRepository.findById(id).orElseThrow(
+                () -> new RuntimeException("id not found")
+        );
+        existingMechaEquipement.setName(mechaEquipment.getName());
+        existingMechaEquipement.setImageUrl(mechaEquipment.getImageUrl());
+        existingMechaEquipement.setEquipmentType(mechaEquipment.getEquipmentType());
+        existingMechaEquipement.setDurability(mechaEquipment.getDurability());
+        existingMechaEquipement.setWeight(mechaEquipment.getWeight());
+        existingMechaEquipement.setPowerConsumption(mechaEquipment.getPowerConsumption());
+        mechaEquipmentRepository.save(existingMechaEquipement);
+    }
+
+    @Override
+    public void updateMechaEquipement(Long id, MechaEquipment mechaEquipment) {
+        MechaEquipment existingMechaEquipement = mechaEquipmentRepository.findById(id).orElseThrow(
+                () -> new RuntimeException("id not found")
+        );
+        existingMechaEquipement.setName(mechaEquipment.getName());
+        existingMechaEquipement.setImageUrl(mechaEquipment.getImageUrl());
+        existingMechaEquipement.setEquipmentType(mechaEquipment.getEquipmentType());
+        existingMechaEquipement.setDurability(mechaEquipment.getDurability());
+        existingMechaEquipement.setWeight(mechaEquipment.getWeight());
+        existingMechaEquipement.setPowerConsumption(mechaEquipment.getPowerConsumption());
+        existingMechaEquipement.setComments(mechaEquipment.getComments());
         mechaEquipmentRepository.save(existingMechaEquipement);
     }
 

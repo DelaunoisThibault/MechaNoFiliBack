@@ -6,6 +6,7 @@ import be.technifutur.mechanofiliback.dl.enums.EquipmentType;
 public record MechaEquipementCreateDTO(
         Long id,
         String name,
+        String imageUrl,
         int weight,
         EquipmentType equipmentType,
         int powerConsumption,
@@ -15,6 +16,7 @@ public record MechaEquipementCreateDTO(
         return new MechaEquipementCreateDTO(
                 mechaEquipment.getId(),
                 mechaEquipment.getName(),
+                mechaEquipment.getImageUrl(),
                 mechaEquipment.getWeight(),
                 mechaEquipment.getEquipmentType(),
                 mechaEquipment.getPowerConsumption(),

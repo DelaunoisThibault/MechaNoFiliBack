@@ -25,7 +25,7 @@ public class LegsComponent extends MechaComponent {
     private int durability;
 
     @Column(nullable = false)
-    private int strength;
+    private int loadLimit;
 
     @Column(nullable = false)
     private String type;
@@ -36,21 +36,33 @@ public class LegsComponent extends MechaComponent {
     @Embedded
     private ComponentSize size;
 
-    public LegsComponent(String name, int weight, String imageUrl, int powerConsumption, int durability, int strength, String type, WeightCategory weightCategory, ComponentSize size) {
-        super(name, weight, imageUrl);
+    public LegsComponent(String name, int weight, int powerConsumption, int durability, int loadLimit, String type, WeightCategory weightCategory, ComponentSize size) {
+        super(name, weight);
         this.powerConsumption = powerConsumption;
         this.durability = durability;
-        this.strength = strength;
+        this.loadLimit = loadLimit;
         this.type = type;
         this.weightCategory = weightCategory;
         this.size = size;
     }
 
-    public LegsComponent(String name, int weight, List<Comment> comments, String imageUrl, int powerConsumption, int durability, int strength, String type, WeightCategory weightCategory, ComponentSize size) {
+    public LegsComponent(String name, int weight, String imageUrl, int powerConsumption, int durability, int loadLimit, String type, WeightCategory weightCategory, ComponentSize size) {
+        this.name = name;
+        this.weight = weight;
+        this.imageUrl = imageUrl;
+        this.powerConsumption = powerConsumption;
+        this.durability = durability;
+        this.loadLimit = loadLimit;
+        this.type = type;
+        this.weightCategory = weightCategory;
+        this.size = size;
+    }
+
+    public LegsComponent(String name, int weight, List<Comment> comments, String imageUrl, int powerConsumption, int durability, int loadLimit, String type, WeightCategory weightCategory, ComponentSize size) {
         super(name, weight, comments, imageUrl);
         this.powerConsumption = powerConsumption;
         this.durability = durability;
-        this.strength = strength;
+        this.loadLimit = loadLimit;
         this.type = type;
         this.weightCategory = weightCategory;
         this.size = size;

@@ -23,6 +23,10 @@ public class MechaEquipment {
     @Column(nullable = false, length = 123)
     private String name;
 
+    @Column(nullable = false)
+    @Setter
+    private String imageUrl;
+
     @Setter
     @Column(nullable = false)
     private int weight;
@@ -52,8 +56,18 @@ public class MechaEquipment {
         this.durability = durability;
     }
 
-    public MechaEquipment(String name, int weight, EquipmentType equipmentType, int powerConsumption, int durability, List<Comment> comments) {
+    public MechaEquipment(String name, String imageUrl, int weight, EquipmentType equipmentType, int powerConsumption, int durability) {
         this.name = name;
+        this.imageUrl = imageUrl;
+        this.weight = weight;
+        this.equipmentType = equipmentType;
+        this.powerConsumption = powerConsumption;
+        this.durability = durability;
+    }
+
+    public MechaEquipment(String name, String imageUrl, int weight, EquipmentType equipmentType, int powerConsumption, int durability, List<Comment> comments) {
+        this.name = name;
+        this.imageUrl = imageUrl;
         this.weight = weight;
         this.equipmentType = equipmentType;
         this.powerConsumption = powerConsumption;

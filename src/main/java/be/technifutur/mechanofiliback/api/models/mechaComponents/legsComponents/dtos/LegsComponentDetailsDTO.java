@@ -1,8 +1,6 @@
 package be.technifutur.mechanofiliback.api.models.mechaComponents.legsComponents.dtos;
 
 import be.technifutur.mechanofiliback.api.models.comments.dtos.CommentDTO;
-import be.technifutur.mechanofiliback.api.models.mechaComponents.armsComponents.dtos.ArmsComponentDetailsDTO;
-import be.technifutur.mechanofiliback.dl.entities.mechacomponents.ArmsComponent;
 import be.technifutur.mechanofiliback.dl.entities.mechacomponents.ComponentSize;
 import be.technifutur.mechanofiliback.dl.entities.mechacomponents.LegsComponent;
 import be.technifutur.mechanofiliback.dl.enums.WeightCategory;
@@ -18,7 +16,7 @@ public record LegsComponentDetailsDTO(
         Set<CommentDTO> comments,
         int powerConsumption,
         int durability,
-        int strength,
+        int loadLimit,
         WeightCategory weightCategory,
         String type,
         ComponentSize size
@@ -33,7 +31,7 @@ public record LegsComponentDetailsDTO(
                 legsComponent.getComments().stream().map(CommentDTO::fromComment).collect(Collectors.toSet()),
                 legsComponent.getPowerConsumption(),
                 legsComponent.getDurability(),
-                legsComponent.getStrength(),
+                legsComponent.getLoadLimit(),
                 legsComponent.getWeightCategory(),
                 legsComponent.getType(),
                 legsComponent.getSize()

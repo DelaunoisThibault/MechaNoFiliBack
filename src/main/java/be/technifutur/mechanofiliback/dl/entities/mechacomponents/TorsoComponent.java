@@ -43,6 +43,18 @@ public class TorsoComponent extends MechaComponent {
     @Embedded
     private ComponentSize size;
 
+    public TorsoComponent(String name, int weight, int powerConsumption, int durability, CockpitComfortLevel cockpitComfortLevel, List<TorsoFunctionnality> functionnality, int nbrPossiblePilots, String type, WeightCategory weightCategory, ComponentSize size) {
+        super(name, weight);
+        this.powerConsumption = powerConsumption;
+        this.durability = durability;
+        this.cockpitComfortLevel = cockpitComfortLevel;
+        this.functionnality = functionnality;
+        this.nbrPossiblePilots = nbrPossiblePilots;
+        this.type = type;
+        this.weightCategory = weightCategory;
+        this.size = size;
+    }
+
     public TorsoComponent(String name, int weight, String imageUrl, int powerConsumption, int durability, CockpitComfortLevel cockpitComfortLevel, List<TorsoFunctionnality> functionnality, int nbrPossiblePilots, String type, WeightCategory weightCategory, ComponentSize size) {
         super(name, weight, imageUrl);
         this.powerConsumption = powerConsumption;

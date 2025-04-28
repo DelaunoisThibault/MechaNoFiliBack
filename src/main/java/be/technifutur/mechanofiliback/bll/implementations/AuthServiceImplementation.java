@@ -17,7 +17,7 @@ public class AuthServiceImplementation implements AuthService {
 
     @Override
     public void register(User user) {
-        if (userRepository.existsByEmail(user.getEmail())) {
+        if (userRepository.existsByEmail(user.getEmail()) || userRepository.existsByUsername(user.getUsername())) {
 
             throw new RuntimeException();
         }

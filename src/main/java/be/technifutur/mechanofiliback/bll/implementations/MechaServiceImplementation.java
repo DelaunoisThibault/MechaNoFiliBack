@@ -1,13 +1,17 @@
 package be.technifutur.mechanofiliback.bll.implementations;
 
 import be.technifutur.mechanofiliback.bll.MechaService;
+import be.technifutur.mechanofiliback.bll.exceptions.MechaNotFoundException;
 import be.technifutur.mechanofiliback.dal.repositories.MechaEquipmentRepository;
 import be.technifutur.mechanofiliback.dal.repositories.MechaRepository;
 import be.technifutur.mechanofiliback.dl.entities.Mecha;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -69,6 +73,18 @@ public class MechaServiceImplementation implements MechaService {
     public Page<Mecha> findAll(Pageable pageable) {
 
         return mechaRepository.findAll(pageable);
+    }
+
+    @Override
+    public List<Mecha> getMechasByUser(Long id) {
+        return mechaRepository.findAllByUser(id)
+                .orElseThrow(() -> new MechaNotFoundException("Post with id " + id + " not found"));
+    }
+
+    @Override
+    public Mecha getSingleMechaByUser(Long mechaId, Long userId) {
+        return mechaRepository.findSpecificMechaByUser(mechaId, userId)
+                .orElseThrow(() -> new MechaNotFoundException("Mecha with id " + mechaId + " or User with id " + userId + " not found"));
     }
 
     @Override

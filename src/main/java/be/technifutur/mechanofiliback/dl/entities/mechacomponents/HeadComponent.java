@@ -36,6 +36,16 @@ public class HeadComponent extends MechaComponent {
     @Embedded
     private ComponentSize size;
 
+    public HeadComponent(String name, int weight, int powerConsumption, int durability, String sensors, String fireControlSystem, WeightCategory weightCategory, ComponentSize size) {
+        super(name, weight);
+        this.powerConsumption = powerConsumption;
+        this.durability = durability;
+        this.sensors = sensors;
+        this.fireControlSystem = fireControlSystem;
+        this.weightCategory = weightCategory;
+        this.size = size;
+    }
+
     public HeadComponent(String name, int weight, String imageUrl, int powerConsumption, int durability, String sensors, String fireControlSystem, WeightCategory weightCategory, ComponentSize size) {
         super(name, weight, imageUrl);
         this.powerConsumption = powerConsumption;

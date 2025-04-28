@@ -17,7 +17,7 @@ public record LegsComponentDetailsForm(
         List<Comment> comments,
         int powerConsumption,
         int durability,
-        int strength,
+        int loadLimit,
         WeightCategory weightCategory,
         String type,
         ComponentSize size
@@ -30,7 +30,7 @@ public record LegsComponentDetailsForm(
                         imageUrl,
                         powerConsumption,
                         durability,
-                        strength,
+                        loadLimit,
                         type,
                         weightCategory,
                         size

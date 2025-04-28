@@ -27,6 +27,13 @@ public class GeneratorComponent extends MechaComponent {
     @Embedded
     private ComponentSize size;
 
+    public GeneratorComponent(String name, int weight, int powerCapacity, WeightCategory weightCategory, ComponentSize size) {
+        super(name, weight);
+        this.powerCapacity = powerCapacity;
+        this.weightCategory = weightCategory;
+        this.size = size;
+    }
+
     public GeneratorComponent(String name, int weight, String imageUrl, int powerCapacity, WeightCategory weightCategory, ComponentSize size) {
         super(name, weight, imageUrl);
         this.powerCapacity = powerCapacity;

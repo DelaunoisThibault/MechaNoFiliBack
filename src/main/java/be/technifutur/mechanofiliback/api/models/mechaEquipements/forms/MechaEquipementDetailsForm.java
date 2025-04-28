@@ -11,6 +11,7 @@ import java.util.List;
 public record MechaEquipementDetailsForm(
         @NotBlank @Size(max = 100)
         String name,
+        String imageUrl,
         int weight,
         EquipmentType equipmentType,
         int powerConsumption,
@@ -20,6 +21,7 @@ public record MechaEquipementDetailsForm(
     public MechaEquipment toMechaEquipment() {
         return new MechaEquipment(
                 name,
+                imageUrl,
                 weight,
                 equipmentType,
                 powerConsumption,

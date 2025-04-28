@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 public record MechaEquipementDetailsDTO(
         Long id,
         String name,
+        String imageUrl,
         int weight,
         EquipmentType equipmentType,
         int powerConsumption,
@@ -20,6 +21,7 @@ public record MechaEquipementDetailsDTO(
         return new MechaEquipementDetailsDTO(
                 mechaEquipment.getId(),
                 mechaEquipment.getName(),
+                mechaEquipment.getImageUrl(),
                 mechaEquipment.getWeight(),
                 mechaEquipment.getEquipmentType(),
                 mechaEquipment.getPowerConsumption(),

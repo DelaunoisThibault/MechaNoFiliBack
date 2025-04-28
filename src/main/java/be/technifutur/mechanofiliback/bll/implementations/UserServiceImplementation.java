@@ -65,11 +65,20 @@ public class UserServiceImplementation  implements UserService {
 
     @Override
     public void deleteUserById(Long id) {
-
+        if(!userRepository.existsById(id)) {
+            throw new RuntimeException("id not found");
+        }
+        userRepository.deleteById(id);
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return null;
+        return userRepository.findByUsername(username).orElseThrow();
     }
+
+    @Override
+    public UserDetails loadUserByEmail(String email) throws UsernameNotFoundException {
+        return userRepository.findByEmail(email).orElseThrow();
+    }
+
 }

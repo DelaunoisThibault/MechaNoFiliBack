@@ -6,13 +6,15 @@ import be.technifutur.mechanofiliback.dl.enums.MechaType;
 public record MechaEmptyDTO(
         Long id,
         String name,
-        MechaType mechaType
+        MechaType mechaType,
+        Long userId
 ) {
     public static MechaEmptyDTO fromEmptyMecha(Mecha mecha) {
         return new MechaEmptyDTO(
                 mecha.getId(),
                 mecha.getName(),
-                mecha.getMechaType()
+                mecha.getMechaType(),
+                mecha.getUser().getId()
         );
     }
 

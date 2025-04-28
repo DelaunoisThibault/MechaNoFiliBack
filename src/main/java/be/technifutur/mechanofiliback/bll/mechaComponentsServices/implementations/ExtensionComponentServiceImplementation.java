@@ -15,6 +15,12 @@ public class ExtensionComponentServiceImplementation implements ExtensionCompone
     private final ExtensionComponentRepository extensionComponentRepository;
 
     @Override
+    public ExtensionComponent createExtensionComponentNoComment(ExtensionComponent extensionComponent) {
+        extensionComponentRepository.save(extensionComponent);
+        return extensionComponent;
+    }
+
+    @Override
     public ExtensionComponent createExtensionComponent(ExtensionComponent extensionComponent) {
         extensionComponentRepository.save(extensionComponent);
         return extensionComponent;
@@ -43,15 +49,28 @@ public class ExtensionComponentServiceImplementation implements ExtensionCompone
     }
 
     @Override
+    public void updateExtensionComponentNoComment(Long id, ExtensionComponent extensionComponent) {
+        ExtensionComponent existingExtension = extensionComponentRepository.findById(id).orElseThrow(
+                () -> new RuntimeException("id not found")
+        );
+        existingExtension.setName(extensionComponent.getName());
+        existingExtension.setWeight(extensionComponent.getWeight());
+        existingExtension.setImageUrl(extensionComponent.getImageUrl());
+        existingExtension.setPowerConsumption(extensionComponent.getPowerConsumption());
+    }
+
+    @Override
     public void updateExtensionComponent(Long id, ExtensionComponent extensionComponent) {
         ExtensionComponent existingExtension = extensionComponentRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("id not found")
         );
         existingExtension.setName(extensionComponent.getName());
         existingExtension.setWeight(extensionComponent.getWeight());
+        existingExtension.setImageUrl(extensionComponent.getImageUrl());
         existingExtension.setPowerConsumption(extensionComponent.getPowerConsumption());
         existingExtension.setComments(extensionComponent.getComments());
     }
+
     @Override
     public void deleteExtensionComponentById(Long id) {
         if(!extensionComponentRepository.existsById(id)) {

@@ -34,6 +34,16 @@ public class ArmsComponent extends MechaComponent {
     @Embedded
     private ComponentSize size;
 
+    public ArmsComponent(String name, int weight, int powerConsumption, int durability, int strength, WeightCategory weightCategory, String type, ComponentSize size) {
+        super(name, weight);
+        this.powerConsumption = powerConsumption;
+        this.durability = durability;
+        this.strength = strength;
+        this.weightCategory = weightCategory;
+        this.type = type;
+        this.size = size;
+    }
+
     public ArmsComponent(String name, int weight, String imageUrl, int powerConsumption, int durability, int strength, WeightCategory weightCategory, String type, ComponentSize size) {
         super(name, weight, imageUrl);
         this.powerConsumption = powerConsumption;

@@ -8,6 +8,7 @@ import be.technifutur.mechanofiliback.api.models.mechas.forms.MechaForm;
 import be.technifutur.mechanofiliback.bll.MechaService;
 import be.technifutur.mechanofiliback.bll.exceptions.MechaNotFoundException;
 import be.technifutur.mechanofiliback.dl.entities.Mecha;
+import be.technifutur.mechanofiliback.dl.entities.User;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +17,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -54,6 +57,32 @@ public class MechaController {
         }
     }
 
+    @PreAuthorize("isAuthenticated()")
+    @Operation(summary = "Returns empty mechas from specific user")
+    @GetMapping("/empty/user")
+    public ResponseEntity<List<MechaEmptyDTO>> getEmptyMechasByUser(
+
+            @AuthenticationPrincipal User user
+    ) {
+        List<Mecha> mechas = mechaService.getMechasByUser(user.getId());
+        List<MechaEmptyDTO>dtos = mechas.stream()
+                .map(MechaEmptyDTO::fromEmptyMecha).toList();
+        return ResponseEntity.ok(dtos);
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @Operation(summary = "Returns empty mecha with specific id from specific user")
+    @GetMapping("/empty/user/{id}")
+    public ResponseEntity<List<MechaEmptyDTO>> getSpecificEmptyMechaByUser(
+            @PathVariable("id") Long id,
+            @AuthenticationPrincipal User user
+    ) {
+        List<Mecha> mechas = mechaService.getMechasByUser(user.getId());
+        List<MechaEmptyDTO>dtos = mechas.stream()
+                .map(MechaEmptyDTO::fromEmptyMecha).toList();
+        return ResponseEntity.ok(dtos);
+    }
+
     @Operation(summary = "Creates a new empty mecha")
     @PostMapping("/empty")
     public ResponseEntity<MechaEmptyDTO> createEmptyMecha(
@@ -90,11 +119,11 @@ public class MechaController {
             @RequestParam(required = false, defaultValue = "1") int page,
             @RequestParam(required = false, defaultValue = "5") int size
     ) {
-        Page<Mecha> capabilities = mechaService.findAll(PageRequest.of(page - 1, size, Sort.by(Sort.Direction.ASC, "id")));
-        List<MechaDTO> capabilitiesDTOs = capabilities.getContent().stream()
+        Page<Mecha> mechas = mechaService.findAll(PageRequest.of(page - 1, size, Sort.by(Sort.Direction.ASC, "id")));
+        List<MechaDTO> mechaDTOS = mechas.getContent().stream()
                 .map(MechaDTO::fromMecha)
                 .toList();
-        CustomPage<MechaDTO> result = new CustomPage<>(capabilitiesDTOs, capabilities.getTotalPages(), capabilities.getNumber() + 1);
+        CustomPage<MechaDTO> result = new CustomPage<>(mechaDTOS, mechas.getTotalPages(), mechas.getNumber() + 1);
         return ResponseEntity.ok(result);
     }
 

@@ -66,10 +66,20 @@ public class Mecha {
     @Setter
     private MechaEquipment rightShoulder;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     public Mecha (String name, MechaType mechaType) {
         this();
         this.name = name;
         this.mechaType = mechaType;
+    }
+
+    public Mecha(String name, MechaType mechaType, User user) {
+        this.name = name;
+        this.mechaType = mechaType;
+        this.user = user;
     }
 
     public Mecha (String name, MechaType mechaType, ArmsComponent arms, LegsComponent legs, HeadComponent head, TorsoComponent torso, GeneratorComponent generator, ExtensionComponent extension, MechaEquipment leftHand, MechaEquipment rightHand, MechaEquipment leftShoulder, MechaEquipment rightShoulder) {
@@ -84,5 +94,10 @@ public class Mecha {
         this.rightHand = rightHand;
         this.leftShoulder = leftShoulder;
         this.rightShoulder = rightShoulder;
+    }
+
+    public Mecha(String name, MechaType mechaType, ArmsComponent arms, LegsComponent legs, HeadComponent head, TorsoComponent torso, GeneratorComponent generator, ExtensionComponent extension, MechaEquipment leftHand, MechaEquipment rightHand, MechaEquipment leftShoulder, MechaEquipment rightShoulder, User user) {
+        this(name, mechaType, arms, legs, head, torso, generator, extension, leftHand, rightHand, leftShoulder, rightShoulder);
+        this.user = user;
     }
 }

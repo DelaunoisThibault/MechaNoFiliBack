@@ -6,6 +6,10 @@ import org.springframework.data.domain.Pageable;
 
 public interface MechaEquipementService {
 
+    MechaEquipment createMechaEquipementNoImage(MechaEquipment mechaEquipment);
+
+    MechaEquipment createMechaEquipementNoComment(MechaEquipment mechaEquipment);
+
     MechaEquipment createMechaEquipement(MechaEquipment mechaEquipment);
 
     MechaEquipment saveMechaEquipement(MechaEquipment mechaEquipment);
@@ -13,6 +17,10 @@ public interface MechaEquipementService {
     MechaEquipment findMechaEquipementById(Long id);
 
     Page<MechaEquipment> findAllMechaEquipement(Pageable pageable);
+
+    void updateMechaEquipementNoImage(Long id, MechaEquipment mechaEquipment);
+
+    void updateMechaEquipementNoComment(Long id, MechaEquipment mechaEquipment);
 
     void updateMechaEquipement(Long id, MechaEquipment mechaEquipment);
 

@@ -8,11 +8,15 @@ public interface ExtensionComponentService {
 
     ExtensionComponent saveExtensionComponent(ExtensionComponent extensionComponent);
 
+    ExtensionComponent createExtensionComponentNoComment(ExtensionComponent extensionComponent);
+
     ExtensionComponent createExtensionComponent(ExtensionComponent extensionComponent);
 
     ExtensionComponent findExtensionComponentById(Long id);
 
     Page<ExtensionComponent> findAllExtensionComponent(Pageable pageable);
+
+    void updateExtensionComponentNoComment(Long id, ExtensionComponent extensionComponent);
 
     void updateExtensionComponent(Long id, ExtensionComponent extensionComponent);
 

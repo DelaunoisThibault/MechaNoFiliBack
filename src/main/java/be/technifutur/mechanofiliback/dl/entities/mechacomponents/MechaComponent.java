@@ -22,19 +22,25 @@ public abstract class MechaComponent {
 
     @Setter
     @Column(nullable = false, length = 123)
-    private String name;
+    protected String name;
 
     @Setter
     @Column(nullable = false)
-    private int weight;
+    protected int weight;
 
     @Column(nullable = false)
     @Setter
-    private String imageUrl;
+    protected String imageUrl;
 
     @Setter
     @OneToMany
-    private List<Comment> comments = new ArrayList<>();
+    protected List<Comment> comments = new ArrayList<>();
+
+    public MechaComponent(String name, int weight) {
+        this();
+        this.name = name;
+        this.weight = weight;
+    }
 
     public MechaComponent(String name, int weight, String imageUrl) {
         this();
